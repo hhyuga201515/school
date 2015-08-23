@@ -95,6 +95,7 @@ int main( void )
 		// èoóÕ
 		/////
 		fprintf( fp, "%d,%lf,%lf\n", j, simpsonsIntegralVal, trapezoidalIntegralVal );
+		printf( "%d\t%lf\t%lf\n", j, simpsonsIntegralVal, trapezoidalIntegralVal );
 	}
 
 	fclose( fp );

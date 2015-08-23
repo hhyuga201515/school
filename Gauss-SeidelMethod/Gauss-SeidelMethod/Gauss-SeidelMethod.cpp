@@ -6,8 +6,8 @@
 #include <float.h>
 //#include <limits.h>
 
-#define INPUT_FILE
-//#define INPUT_STDIN
+//#define INPUT_FILE
+#define INPUT_STDIN
 
 bool initFlag = false;	// getMax関数の記憶している最大値を初期化するため
 
@@ -29,28 +29,12 @@ int main( void )
 	//////////
 
 	// 次数、許容絶対誤差の入力
-	#ifdef INPUT_FILE
-	FILE *fp = fopen( "input.txt", "rt" );
-	#endif
-
-	#ifdef INPUT_STDIN
 	scanf( "%d %lf", &n, &e );
-	#else
-	fscanf( fp, "%d %lf", &n, &e );
-	#endif
-
+	
 	// 方程式の係数の入力
-	#ifdef INPUT_SDTIN
 	getc( stdin );	//	改行を読み飛ばす
-	#else
-	getc( fp );
-	#endif
 	for ( int i = 0; i < n; i++ ) {
-		#ifdef INPUT_STDIN
 		fgets( coefStr[ i ], sizeof( coefStr[ i ] ), stdin );	// 1行読み込む
-		#else
-		fgets( coefStr[ i ], sizeof( coefStr[ i ] ), fp );	// 1行読み込む
-		#endif
 	}
 
 	// coefStrをcoefに変換
@@ -85,6 +69,24 @@ int main( void )
 	// 処理
 	//////////
 
+
+	/////
+	// 対角優位行列の確認
+	/////
+	double dominanceCheck;
+	for ( int i = 0; i < n; i++ ) {
+		dominanceCheck = 0.0;
+		for ( int j = 0; j < n; j++ ) {
+			if ( j != i ) dominanceCheck += fabs( coef[ i ][ j ] );
+		}
+		if ( coef[ i ][ i ] < dominanceCheck ) {
+			printf( "対角優位行列ではありません\n\n" );
+			system( "pause" );
+			return -1;
+		}
+	}
+
+
 	// 解
 	double x[ 100 ] = { 0.0 };
 	double oldX = 0.0;
@@ -111,7 +113,7 @@ int main( void )
 
 			x[ i ] /= coef[ i ][ i ];	// 係数で割る
 
-			printf( "%lf\n", getMax( fabs( x[ i ] - oldX ) ) );	// 差を取得
+			getMax( fabs( x[ i ] - oldX ) );	// 差の最大を計算
 			//printf( "x[ %d ] :%f\n", i, x[ i ] );	// 表示
 		}
 
