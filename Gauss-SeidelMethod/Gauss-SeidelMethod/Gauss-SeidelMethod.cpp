@@ -56,12 +56,14 @@ int main( void )
 	}
 
 	// 表示
+	/*
 	for ( int i = 0; i < n; i++ ) {
 		for ( int j = 0; j < n + 1; j++ ) {
 			printf( "%lf ", coef[ i ][ j ] );
 		}
 		printf( "\n" );
 	}
+	*/
 	
 
 
@@ -79,7 +81,9 @@ int main( void )
 		for ( int j = 0; j < n; j++ ) {
 			if ( j != i ) dominanceCheck += fabs( coef[ i ][ j ] );
 		}
-		if ( coef[ i ][ i ] < dominanceCheck ) {
+
+		// 判定
+		if ( fabs( coef[ i ][ i ] ) < dominanceCheck ) {
 			printf( "対角優位行列ではありません\n\n" );
 			system( "pause" );
 			return -1;
@@ -121,9 +125,9 @@ int main( void )
 	} while ( getMax( DBL_MIN ) > e );
 
 	// 表示
-	printf( "k :%d\n", k );
+	printf( "\n%d\n", k );
 	for ( int i = 0; i < n; i++ ) {
-		printf( "x[ %d ] :%lf\n", i, x[ i ] );	// 表示
+		printf( "%lf\n", x[ i ] );	// 表示
 	}
 
 	//////////
