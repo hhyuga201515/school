@@ -53,9 +53,7 @@ int main( void )
 	evenNum *= 2.0;
 	integralVal += oddNum + evenNum;
 	integralVal += f( a ) + f( b );
-
 	integralVal *= h / 3.0;	// h(‹æŠÔ•)‚ÅŠ„‚é
-
 
 	printf( "\n%lf\n", integralVal );
 	system( "pause" );

@@ -14,7 +14,7 @@ double f( double x )
 
 int main( void )
 {
-	double a;	// ‹æŠÔ•‚Í‚¶‚Ü‚è
+	double a;	// ‹æŠÔ‚Í‚¶‚Ü‚è
 	double b;	// ‹æŠÔI‚í‚è
 	int n;	// •ªŠ„”
 	double h;	// ‹æŠÔ•
@@ -31,7 +31,7 @@ int main( void )
 	//////////
 	// Ï•ª
 	//////////
-	h = ( b - a ) / ( double )n;
+	h = ( b - a ) / ( double )n;	// ‹æŠÔ•‚ÌŒvZ
 
 	for ( int i = 1; i <= n - 1; i++ ) {
 		integralVal += f( a + ( h * ( double )i ) );
